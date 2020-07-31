@@ -1,0 +1,18 @@
+
+
+
+ <FlexboxLayout flexDirection="column" >  
+
+    <TextField  #texto="ngModel"  [(ngModel)]="textFieldValue" hint="Ingrese texto..." required   width="100"></TextField>
+     <Label *ngIf="texto.hasError('required')" text="* complete el campo" class="h4 text-center"></Label>
+
+
+ 
+
+<Button text="Buscar!" (tap)="onButtonTap()" (longPress)="longPress()" width="100" *ngIf="texto.valid  || !isLoading"
+ 
+></Button>
+
+<ActivityIndicator [busy]="isLoading"></ActivityIndicator>
+</FlexboxLayout>
+   

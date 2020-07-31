@@ -15,7 +15,36 @@
     <Label text="Settings"></Label>
 </ActionBar>
 
-<GridLayout class="page__content">
-    <Label class="page__content-icon fas" text="&#xf013;"></Label>
-    <Label class="page__content-placeholder" text="<!-- Page content goes here -->"></Label>
-</GridLayout>
+ 
+
+<StackLayout class="page__content" #layout>
+   
+
+    <app-buscador (search)="BuscarAhora($event)" [valueIni]="'Elemento'"></app-buscador>
+
+
+ 
+   
+
+    <PullToRefresh (refresh)="onPull($event)"
+    indicatorFillColor="purple"
+    indicatorColor="white"
+    >
+
+              <ListView [items]="resultados" 
+              (itemTap)="onItemTap($event)" class="list-group">
+                <ng-template let-item="item" let-odd="odd" let-even="even">
+                  <FlexboxLayout flexDirection="row">
+                    <Image src="res://icon" class="thumb img-circle"  ></Image>
+                    <Label [text]="item" class="list-group-item"  ></Label>
+                    
+                  </FlexboxLayout>
+                </ng-template>
+            </ListView>
+
+    </PullToRefresh>
+    
+
+
+    
+</StackLayout>
